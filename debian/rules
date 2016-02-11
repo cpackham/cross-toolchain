@@ -1,0 +1,29 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+define build_configuration
+	ct-ng distclean; \
+	cp $(1).config .config; \
+	ct-ng oldconfig; \
+	CFLAGS= CXXFLAGS= CPPFLAGS= LDFLAGS= ct-ng build
+endef
+
+CONFIGS := powerpc-e500mc-linux-gnu powerpc-e500-linux-gnu
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	$(foreach c,$(CONFIGS),$(call build_configuration,$(c)))
+
+override_dh_auto_clean:
+	ct-ng distclean
+
+override_dh_shlibdeps:
+override_dh_makeshlibs:
+override_dh_strip:
+	# these automatic steps complain about differing object
+	# file formats for the target objects so just skip them
+

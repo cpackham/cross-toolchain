@@ -1,0 +1,20 @@
+Source: cross-toolchain
+Section: devel
+Priority: optional
+Maintainer: Chris Packham <chris.packham@alliedtelesis.co.nz>
+Build-Depends: crosstool-ng
+Standards-Version: 3.9.5
+Homepage: https://intranet.atlnz.lc/awpwiki/index.php/Main_Page
+
+Package: cross-toolchain-ppc-e500mc
+Architecture: any
+Depends:
+Description: cross-toolchain-ppc-e500mc
+  PowerPC e500 mutlicore toolchain
+
+Package: cross-toolchain-ppc-e500
+Architecture: any
+Depends:
+Description: cross-toolchain-ppc-e500
+  PowerPC e500 toolchain
+
